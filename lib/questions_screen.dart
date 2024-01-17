@@ -18,6 +18,8 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(Object context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         QuizQuestion(widget.question, widget.select),
       ],

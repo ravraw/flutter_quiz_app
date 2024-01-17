@@ -9,11 +9,21 @@ class QuizQuestion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(question.text),
-        for (final answer in question.answers) QuizAnswer(answer, select),
-      ],
+    return Container(
+      margin: const EdgeInsets.all(50),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            question.text,
+            style: const TextStyle(
+                fontSize: 24, fontWeight: FontWeight.w800, color: Colors.white),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 50),
+          for (final answer in question.answers) QuizAnswer(answer, select),
+        ],
+      ),
     );
   }
 }

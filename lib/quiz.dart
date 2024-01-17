@@ -3,7 +3,7 @@ import 'package:flutter_quiz_app/data/questions.dart';
 import 'package:flutter_quiz_app/questions_screen.dart';
 import 'package:flutter_quiz_app/start_screen.dart';
 
-const color1 = Color.fromARGB(255, 243, 238, 238);
+const color1 = Color.fromARGB(255, 130, 170, 226);
 const color2 = Color.fromARGB(255, 61, 43, 166);
 
 class Quiz extends StatefulWidget {
@@ -33,7 +33,7 @@ class _QuizState extends State<Quiz> {
 
   void switchScreen() {
     setState(() {
-      activeScreen = QuestionsScreen(questions[1], select);
+      activeScreen = QuestionsScreen(questions[0], select);
     });
   }
 
