@@ -4,7 +4,7 @@ import 'package:flutter_quiz_app/questions_screen.dart';
 import 'package:flutter_quiz_app/start_screen.dart';
 
 const color1 = Color.fromARGB(255, 130, 170, 226);
-const color2 = Color.fromARGB(255, 61, 43, 166);
+const color2 = Color.fromARGB(255, 22, 72, 141);
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -29,11 +29,19 @@ class _QuizState extends State<Quiz> {
     setState(() {
       currentQuestion++;
     });
+    if (currentQuestion < questions.length) {
+      switchScreen();
+    } else {
+      setState(() {
+        activeScreen = StartScreen(switchScreen);
+        currentQuestion = 0;
+      });
+    }
   }
 
   void switchScreen() {
     setState(() {
-      activeScreen = QuestionsScreen(questions[0], select);
+      activeScreen = QuestionsScreen(questions[currentQuestion], select);
     });
   }
 
