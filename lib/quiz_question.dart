@@ -21,7 +21,8 @@ class QuizQuestion extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 50),
-          for (final answer in question.answers) QuizAnswer(answer, select),
+          for (final answer in question.getShuffledAnswer())
+            QuizAnswer(answer, select),
         ],
       ),
     );
