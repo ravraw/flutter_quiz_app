@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quiz_app/data/questions.dart';
 import 'package:flutter_quiz_app/questions_screen.dart';
 import 'package:flutter_quiz_app/start_screen.dart';
+
+const color1 = Color.fromARGB(255, 243, 238, 238);
+const color2 = Color.fromARGB(255, 61, 43, 166);
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -13,6 +17,7 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
   Widget? activeScreen;
+  var currentQuestion = 0;
 
   @override
   void initState() {
@@ -20,9 +25,15 @@ class _QuizState extends State<Quiz> {
     super.initState();
   }
 
+  void select() {
+    setState(() {
+      currentQuestion++;
+    });
+  }
+
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionsScreen();
+      activeScreen = QuestionsScreen(questions[1], select);
     });
   }
 
@@ -36,10 +47,7 @@ class _QuizState extends State<Quiz> {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [
-                Color.fromARGB(255, 243, 238, 238),
-                Color.fromARGB(255, 61, 43, 166),
-              ],
+              colors: [color1, color2],
             ),
           ),
           child: activeScreen,
