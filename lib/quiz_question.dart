@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_quiz_app/models/question.dart';
 import 'package:flutter_quiz_app/quiz_answer.dart';
 
@@ -16,8 +17,11 @@ class QuizQuestion extends StatelessWidget {
         children: [
           Text(
             question.text,
-            style: const TextStyle(
-                fontSize: 24, fontWeight: FontWeight.w800, color: Colors.white),
+            style: GoogleFonts.lato(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 50),

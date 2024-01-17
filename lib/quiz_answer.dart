@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuizAnswer extends StatelessWidget {
   const QuizAnswer(this.answer, this.select, {super.key});
@@ -20,6 +21,10 @@ class QuizAnswer extends StatelessWidget {
       child: Text(
         answer,
         textAlign: TextAlign.center,
+        style: GoogleFonts.lato(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
