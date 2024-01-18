@@ -4,12 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 class QuizAnswer extends StatelessWidget {
   const QuizAnswer(this.answer, this.select, {super.key});
   final String answer;
-  final Function() select;
+  final Function(String) select;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: select,
+      onPressed: () => select(answer),
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.all(10),
         backgroundColor: Colors.white,
@@ -23,7 +23,7 @@ class QuizAnswer extends StatelessWidget {
         textAlign: TextAlign.center,
         style: GoogleFonts.lato(
           fontSize: 18,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.normal,
         ),
       ),
     );

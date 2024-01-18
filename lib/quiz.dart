@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/data/questions.dart';
 import 'package:flutter_quiz_app/questions_screen.dart';
+import 'package:flutter_quiz_app/result_screen.dart';
 import 'package:flutter_quiz_app/start_screen.dart';
 
 const color1 = Color.fromARGB(255, 130, 170, 226);
@@ -18,6 +19,7 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
   Widget? activeScreen;
   var currentQuestion = 0;
+  var selectedAnserws = <String>[];
 
   @override
   void initState() {
@@ -25,23 +27,31 @@ class _QuizState extends State<Quiz> {
     super.initState();
   }
 
-  void select() {
+  void retryQuiz() {
+    setState(() {
+      activeScreen = StartScreen(switchScreen);
+    });
+  }
+
+  void selectAnswer(String selectedAnswer) {
     setState(() {
       currentQuestion++;
     });
+    selectedAnserws.add(selectedAnswer);
     if (currentQuestion < questions.length) {
       switchScreen();
     } else {
       setState(() {
-        activeScreen = StartScreen(switchScreen);
+        activeScreen = ResultScreen(selectedAnserws, retryQuiz);
         currentQuestion = 0;
+        selectedAnserws.clear();
       });
     }
   }
 
   void switchScreen() {
     setState(() {
-      activeScreen = QuestionsScreen(questions[currentQuestion], select);
+      activeScreen = QuestionsScreen(questions[currentQuestion], selectAnswer);
     });
   }
 

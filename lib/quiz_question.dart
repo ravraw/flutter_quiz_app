@@ -6,7 +6,7 @@ import 'package:flutter_quiz_app/quiz_answer.dart';
 class QuizQuestion extends StatelessWidget {
   const QuizQuestion(this.question, this.select, {super.key});
   final Question question;
-  final Function() select;
+  final Function(String) select;
 
   @override
   Widget build(BuildContext context) {
