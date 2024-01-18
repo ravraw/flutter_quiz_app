@@ -11,33 +11,36 @@ class QuestionResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          question,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16.0,
+    return Padding(
+      padding: const EdgeInsets.only(left: 48.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            question,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16.0,
+            ),
           ),
-        ),
-        const SizedBox(height: 8.0),
-        Text(
-          correct,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 14.0,
+          const SizedBox(height: 8.0),
+          Text(
+            correct,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 14.0,
+            ),
           ),
-        ),
-        Text(
-          selected,
-          style: TextStyle(
-            color: selected == correct ? Colors.green : Colors.red,
-            fontSize: 14.0,
+          Text(
+            selected,
+            style: TextStyle(
+              color: selected == correct ? Colors.green : Colors.red,
+              fontSize: 14.0,
+            ),
           ),
-        ),
-        const SizedBox(height: 20),
-      ],
+          const SizedBox(height: 20),
+        ],
+      ),
     );
   }
 }
