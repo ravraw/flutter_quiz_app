@@ -30,6 +30,8 @@ class _QuizState extends State<Quiz> {
   void retryQuiz() {
     setState(() {
       activeScreen = StartScreen(switchScreen);
+      currentQuestion = 0;
+      selectedAnserws.clear();
     });
   }
 
@@ -43,8 +45,6 @@ class _QuizState extends State<Quiz> {
     } else {
       setState(() {
         activeScreen = ResultScreen(selectedAnserws, retryQuiz);
-        currentQuestion = 0;
-        selectedAnserws.clear();
       });
     }
   }

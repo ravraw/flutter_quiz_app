@@ -18,10 +18,11 @@ class ResultScreen extends StatelessWidget {
       summaryData.add({
         'question': question.text,
         'selectedAnswer': selectedAnswer,
-        'correctAnswer': question.answers[0], // 'correctAnswer
+        'correctAnswer': question.answers[0],
         'isCorrect': isCorrect,
       });
     }
+
     return summaryData;
   }
 
@@ -39,12 +40,10 @@ class ResultScreen extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         ),
-        ...getSummaryData()
-            .map((obj) => QuestionResult(
-                obj['question'] as String,
-                obj['selectedAnswer'] as String,
-                obj['correctAnswer'] as String))
-            .toList(),
+        ...getSummaryData().map((obj) => QuestionResult(
+            obj['question'] as String,
+            obj['selectedAnswer'] as String,
+            obj['correctAnswer'] as String)),
         const SizedBox(height: 50),
         OutlinedButton.icon(
             onPressed: retryQuiz,

@@ -13,7 +13,7 @@ class QuestionResult extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          question,
+          question.isEmpty ? 'No question' : question,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 16.0,
@@ -21,14 +21,14 @@ class QuestionResult extends StatelessWidget {
         ),
         const SizedBox(height: 8.0),
         Text(
-          correct,
+          correct.isEmpty ? 'No correct answer' : correct,
           style: const TextStyle(
             color: Colors.grey,
             fontSize: 14.0,
           ),
         ),
         Text(
-          selected,
+          selected.isEmpty ? 'No selected answer' : selected,
           style: TextStyle(
             color: selected == correct ? Colors.green : Colors.red,
             fontSize: 14.0,
