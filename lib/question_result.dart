@@ -34,7 +34,9 @@ class QuestionResult extends StatelessWidget {
           Text(
             selected,
             style: TextStyle(
-              color: selected == correct ? Colors.green : Colors.red,
+              color: selected == correct
+                  ? const Color.fromARGB(255, 10, 245, 17)
+                  : const Color.fromARGB(255, 243, 6, 25),
               fontSize: 14.0,
             ),
           ),
