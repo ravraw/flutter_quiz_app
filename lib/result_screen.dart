@@ -4,12 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_quiz_app/data/questions.dart';
 
 class ResultScreen extends StatelessWidget {
-  ResultScreen(this.selectedAnswers, this.retryQuiz, {super.key});
+  const ResultScreen(this.selectedAnswers, this.retryQuiz, {super.key});
 
   final List<String> selectedAnswers;
   final Function() retryQuiz;
-
-  int correctAnswers = 0;
 
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summaryData = [];
@@ -17,9 +15,7 @@ class ResultScreen extends StatelessWidget {
       var question = questions[i];
       var selectedAnswer = selectedAnswers[i];
       var isCorrect = question.answers[0] == selectedAnswer;
-      if (isCorrect) {
-        correctAnswers++;
-      }
+
       summaryData.add({
         'question': question.text,
         'selectedAnswer': selectedAnswer,
@@ -33,6 +29,17 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int correctAnswers = getSummaryData()
+        .where((element) => element['isCorrect'] as bool)
+        .length;
+
+    for (var i = 0; i < questions.length; i++) {
+      var question = questions[i];
+      var selectedAnswer = selectedAnswers[i];
+      if (question.answers[0] == selectedAnswer) {
+        correctAnswers++;
+      }
+    }
     return SizedBox(
       height: 1000,
       child: Column(
