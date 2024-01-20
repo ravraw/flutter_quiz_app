@@ -29,17 +29,10 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int correctAnswers = getSummaryData()
+    final correctAnswers = getSummaryData()
         .where((element) => element['isCorrect'] as bool)
         .length;
 
-    for (var i = 0; i < questions.length; i++) {
-      var question = questions[i];
-      var selectedAnswer = selectedAnswers[i];
-      if (question.answers[0] == selectedAnswer) {
-        correctAnswers++;
-      }
-    }
     return SizedBox(
       height: 1000,
       child: Column(

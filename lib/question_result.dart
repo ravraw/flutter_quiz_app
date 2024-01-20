@@ -11,38 +11,52 @@ class QuestionResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 48.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            question,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16.0,
-            ),
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 32.0, right: 32.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("${(index + 1).toString()} )"),
+              const SizedBox(width: 8.0),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      question,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                      ),
+                    ),
+                    const SizedBox(height: 8.0),
+                    Text(
+                      correct,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 14.0,
+                      ),
+                    ),
+                    Text(
+                      selected,
+                      style: TextStyle(
+                        color: selected == correct
+                            ? const Color.fromARGB(255, 10, 245, 17)
+                            : const Color.fromARGB(255, 243, 6, 25),
+                        fontSize: 14.0,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 8.0),
-          Text(
-            correct,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 14.0,
-            ),
-          ),
-          Text(
-            selected,
-            style: TextStyle(
-              color: selected == correct
-                  ? const Color.fromARGB(255, 10, 245, 17)
-                  : const Color.fromARGB(255, 243, 6, 25),
-              fontSize: 14.0,
-            ),
-          ),
-          const SizedBox(height: 20),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
