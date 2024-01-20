@@ -4,10 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_quiz_app/data/questions.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen(this.selectedAnswers, this.retryQuiz, {super.key});
+  ResultScreen(this.selectedAnswers, this.retryQuiz, {super.key});
 
   final List<String> selectedAnswers;
   final Function() retryQuiz;
+
+  int correctAnswers = 0;
 
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summaryData = [];
@@ -15,6 +17,9 @@ class ResultScreen extends StatelessWidget {
       var question = questions[i];
       var selectedAnswer = selectedAnswers[i];
       var isCorrect = question.answers[0] == selectedAnswer;
+      if (isCorrect) {
+        correctAnswers++;
+      }
       summaryData.add({
         'question': question.text,
         'selectedAnswer': selectedAnswer,
@@ -34,7 +39,7 @@ class ResultScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'You answered x out of y questions correctly!',
+            'You answered ${correctAnswers.toString()} out of ${selectedAnswers.length.toString()} questions correctly!',
             style: GoogleFonts.lato(
               fontSize: 24,
               fontWeight: FontWeight.bold,
